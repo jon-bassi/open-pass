@@ -1,6 +1,6 @@
-package io.github.jon_bassi.Controllers;
+package io.github.jon_bassi.client;
 
-import io.github.jon_bassi.ResourceLoader;
+import io.github.jon_bassi.util.ResourceLoader;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +11,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -63,8 +62,8 @@ public class MainController implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/io/github/jon_bassi/NewGroup.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/io/github/jon_bassi/group/NewGroup.fxml"));
+            Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("New Group");

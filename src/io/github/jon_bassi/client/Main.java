@@ -1,4 +1,4 @@
-package io.github.jon_bassi;
+package io.github.jon_bassi.client;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 /**
  * Created by jon on 9/22/2016.
+ * Entry point for application
  */
 public class Main extends Application
 {
@@ -20,7 +21,7 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("/io/github/jon_bassi/HomeView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/io/github/jon_bassi/client/Client.fxml"));
         primaryStage.setTitle("open-pass");
         primaryStage.setScene(new Scene(root, 950, 600));
         primaryStage.setResizable(false);

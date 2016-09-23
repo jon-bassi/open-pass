@@ -1,4 +1,4 @@
-package io.github.jon_bassi.Controllers;
+package io.github.jon_bassi.group;
 
 import javafx.fxml.Initializable;
 
@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created by jon on 9/23/2016.
+ * controller for new group window
  */
 public class NewGroupController implements Initializable
 {
