@@ -1,5 +1,7 @@
 package io.github.jon_bassi.client;
 
+import io.github.jon_bassi.util.Context;
+import io.github.jon_bassi.util.ResourceLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +14,9 @@ import javafx.stage.Stage;
  */
 public class Main extends Application
 {
+
+    public static final ResourceLoader resources = ResourceLoader.getInstance();
+    public static final Context context = Context.getInstance();
 
     public static void main(String[] args)
     {

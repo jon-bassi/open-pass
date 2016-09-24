@@ -17,12 +17,10 @@ import java.util.ResourceBundle;
 
 /**
  * Created by jon on 9/22/2016.
- * MainController class for the HomeView
+ * ClientController class for the HomeView
  */
-public class MainController implements Initializable
+public class ClientController implements Initializable
 {
-
-    ResourceLoader resources = new ResourceLoader();
 
     @FXML
     public TreeView<String> groupTree;
@@ -35,17 +33,12 @@ public class MainController implements Initializable
     {
         System.out.println("opening applicaiton...");
 
-        TreeItem<String> rootItem = new TreeItem<String>("Inbox",resources.folderIcon);
+        TreeItem<String> rootItem = new TreeItem<>("root");
         rootItem.setExpanded(true);
-        for (int i = 1; i < 20; i++)
+        for (int i = 0; i < 3; i++)
         {
-            TreeItem<String> item = new TreeItem<String>("Message" + i);
+            TreeItem<String> item = new TreeItem<>("Group " + i, Main.resources.iconList16px.get(40 + i));
             rootItem.getChildren().add(item);
-        }
-        for (int i = 1; i < 3; i++)
-        {
-            TreeItem<String> item = new TreeItem<String>("Message" + i);
-            rootItem.getChildren().get(0).getChildren().add(item);
         }
 
         groupTree.setRoot(rootItem);
@@ -68,9 +61,21 @@ public class MainController implements Initializable
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("New Group");
             stage.setScene(new Scene(root));
+
+            stage.setOnHidden(event -> {
+                System.out.println("Closing new group...");
+
+                // check for update
+                if (Main.context.checkForNewGroup())
+                {
+                    groupTree.getRoot().getChildren().add(Main.context.getNewGroup());
+                    groupTree.refresh();
+                }
+
+            });
+
             stage.show();
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
             //
         }
@@ -91,7 +96,8 @@ public class MainController implements Initializable
     public void displayTreeInfo()
     {
         System.out.println("tree menu clicked");
+        for (int i = 0; i < groupTree.getRoot().getChildren().size(); i++)
+            System.out.println(groupTree.getRoot().getChildren().get(i));
+
     }
-
-
 }
